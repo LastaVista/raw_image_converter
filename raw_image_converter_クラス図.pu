@@ -1,32 +1,34 @@
 @startuml raw_image_converter_クラス図
 
 class Main {
-    - ConfigReader configReader
-    - BinaryFileReader binaryFileReader
-    - Converter converter
-    - TextFileWriter textFileWriter
-    + void executeProgram(String configFilePath, String binaryFilePath, String outputFilePath)
+    - configReader: ConfigReader
+    - binaryFileReader: BinaryFileReader
+    - converter: Converter
+    - textFileWriter: TextFileWriter
+    + execute_program(config_file_path: str, binary_file_path: str, output_file_path: str) -> None
 }
 
 class ConfigReader {
-    + Config readConfig(String configFilePath)
+    + read_config(config_file_path: str) -> Config
 }
 
 class BinaryFileReader {
-    + byte[] readBinaryFile(String binaryFilePath)
+    + read_binary_file(binary_file_path: str) -> bytes
 }
 
 class Converter {
-    + byte[] convert(byte[] binaryData, String endian, int byteSize)
+    + convert(binary_data: bytes, config: Config) -> List[int]
 }
 
 class TextFileWriter {
-    + boolean writeTextFile(String outputFilePath, byte[] convertedData)
+    + write_text_file(output_file_path: str, converted_data: List[int], config: Config) -> bool
 }
 
 class Config {
-    - String endian
-    - int byteSize
+    + endian: str
+    + byte_size: int
+    + width: int
+    + height: int
 }
 
 Main --> ConfigReader

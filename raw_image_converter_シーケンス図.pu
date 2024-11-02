@@ -7,15 +7,16 @@ participant BinaryFileReader
 participant Converter
 participant TextFileWriter
 
-User -> Main: Execute program with args (configFilePath, binaryFilePath, outputFilePath)
-Main -> ConfigReader: readConfig(configFilePath)
-ConfigReader -> Main: return config (endian, byteSize)
-Main -> BinaryFileReader: readBinaryFile(binaryFilePath)
-BinaryFileReader -> Main: return binaryData
-Main -> Converter: convert(binaryData, endian, byteSize)
-Converter -> Main: return convertedData
-Main -> TextFileWriter: writeTextFile(outputFilePath, convertedData)
-TextFileWriter -> Main: return success/failure
+User -> Main: Execute program with args (config_file_path: str, binary_file_path: str, output_file_path: str)
+Main -> ConfigReader: read_config(config_file_path: str)
+ConfigReader -> ConfigReader: config = Config(config_data)
+ConfigReader -> Main: return config
+Main -> BinaryFileReader: read_binary_file(binary_file_path: str)
+BinaryFileReader -> Main: return binary_data: bytes
+Main -> Converter: convert(binary_data: bytes, config: Config)
+Converter -> Main: return converted_data: List[int]
+Main -> TextFileWriter: write_text_file(output_file_path: str, converted_data: List[int], config: Config)
+TextFileWriter -> Main: return success/failure: bool
 Main -> User: Display result
 
 @enduml
