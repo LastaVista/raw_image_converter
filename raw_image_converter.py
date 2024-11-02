@@ -44,7 +44,7 @@ class RawImageConverter:
 if __name__ == "__main__":
     import sys
     if len(sys.argv) != 4:
-        print("Usage: python main.py <configFilePath> <binaryFilePath> <outputFilePath>")
+        print("Usage: python raw_image_conveter.py <config_file_path> <binary_file_path> <output_file_path>")
         sys.exit(1)
 
     config_file_path = sys.argv[1]
