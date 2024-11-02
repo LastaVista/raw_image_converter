@@ -3,3 +3,4 @@ raw_image_converter.build
 raw_image_converter.dist
 raw_image_converter.onefile-build
 *.exe
+/memo.md
