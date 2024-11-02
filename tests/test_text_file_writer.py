@@ -16,7 +16,7 @@ class TestTextFileWriter(unittest.TestCase):
     def test_write_text_file(self):
         writer = TextFileWriter()
         config = Config(endian='little', byte_size=2, width=2, height=2)
-        converted_data = ['1', '2', '3', '4']
+        converted_data = [1, 2, 3, 4]
         success = writer.write_text_file(self.test_file_path, converted_data, config)
         self.assertTrue(success)
 
@@ -27,7 +27,7 @@ class TestTextFileWriter(unittest.TestCase):
     def test_write_text_file_with_invalid_path(self):
         writer = TextFileWriter()
         config = Config(endian='little', byte_size=2, width=2, height=2)
-        converted_data = ['1', '2', '3', '4']
+        converted_data = [1, 2, 3, 4]
         # 無効なパスを指定して書き込みが失敗することを確認します。
         success = writer.write_text_file('/invalid_path/test_output.txt', converted_data, config)
         self.assertFalse(success)
@@ -35,7 +35,7 @@ class TestTextFileWriter(unittest.TestCase):
     def test_write_text_file_with_extra_data(self):
         writer = TextFileWriter()
         config = Config(endian='little', byte_size=2, width=2, height=2)
-        converted_data = ['1', '2', '3', '4', '5', '6']
+        converted_data = [1, 2, 3, 4, 5, 6]
         success = writer.write_text_file(self.test_file_path, converted_data, config)
         self.assertTrue(success)
 
@@ -46,7 +46,7 @@ class TestTextFileWriter(unittest.TestCase):
     def test_write_text_file_with_insufficient_data(self):
         writer = TextFileWriter()
         config = Config(endian='little', byte_size=2, width=2, height=2)
-        converted_data = ['1', '2', '3']
+        converted_data = [1, 2, 3]
         success = writer.write_text_file(self.test_file_path, converted_data, config)
         self.assertTrue(success)
 

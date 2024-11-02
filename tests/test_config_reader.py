@@ -88,6 +88,12 @@ class TestConfigReader(unittest.TestCase):
         reader = ConfigReader()
         with self.assertRaises(ValueError):
             reader.read_config(self.test_file_path)
-            
+    
+    def test_file_not_found(self):
+        # 存在しないファイルパスを指定します。
+        reader = ConfigReader()
+        with self.assertRaises(FileNotFoundError):
+            reader.read_config('non_existent_config.json')
+        
 if __name__ == '__main__':
     unittest.main()

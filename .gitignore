@@ -4,3 +4,6 @@ raw_image_converter.dist
 raw_image_converter.onefile-build
 *.exe
 /memo.md
+temp
+sample/*.bin
+sample/*.csv
