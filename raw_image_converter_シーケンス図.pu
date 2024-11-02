@@ -1,0 +1,21 @@
+@startuml raw_image_converter_シーケンス図
+
+actor User
+participant Main
+participant ConfigReader
+participant BinaryFileReader
+participant Converter
+participant TextFileWriter
+
+User -> Main: Execute program with args (configFilePath, binaryFilePath, outputFilePath)
+Main -> ConfigReader: readConfig(configFilePath)
+ConfigReader -> Main: return config (endian, byteSize)
+Main -> BinaryFileReader: readBinaryFile(binaryFilePath)
+BinaryFileReader -> Main: return binaryData
+Main -> Converter: convert(binaryData, endian, byteSize)
+Converter -> Main: return convertedData
+Main -> TextFileWriter: writeTextFile(outputFilePath, convertedData)
+TextFileWriter -> Main: return success/failure
+Main -> User: Display result
+
+@enduml
